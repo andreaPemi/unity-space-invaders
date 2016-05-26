@@ -77,6 +77,7 @@ public class GeneradorAliens : MonoBehaviour
 						// Comprobamos si hemos tocado el borde
 						if (aliens [i, j].transform.position.x > limiteDer) {
 							limiteAlcanzado = true;
+							velocidad += 03f;
 						}
 					} else {
 
@@ -86,6 +87,7 @@ public class GeneradorAliens : MonoBehaviour
 						// Comprobamos si hemos tocado el borde
 						if (aliens [i, j].transform.position.x < limiteIzq) {
 							limiteAlcanzado = true;
+							velocidad += 03f;
 						}
 					}		
 				}

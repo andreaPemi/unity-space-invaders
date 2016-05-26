@@ -19,6 +19,10 @@ public class botonesMenu : MonoBehaviour {
 
 	}
 
+	public void numjugadores(){
+		Opciones.jugadores = 2;
+	}
+
 	// Use this for initialization
 	void Start () {
 	

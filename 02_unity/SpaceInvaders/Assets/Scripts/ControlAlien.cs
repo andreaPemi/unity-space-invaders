@@ -97,7 +97,10 @@ public class ControlAlien : MonoBehaviour
 			ExplosionNave.GetComponent<AudioSource> ().Play ();
 
 			Destroy (coll.gameObject);
-			//SceneManager.LoadScene ("GameOver");
+
+
+			StartCoroutine(Espera5s());
+
 
 			}
 			
@@ -105,4 +108,12 @@ public class ControlAlien : MonoBehaviour
 
 
 	}
+
+	IEnumerator Espera5s() {
+		print(Time.time);
+		yield return new WaitForSeconds(3);
+		SceneManager.LoadScene ("GameOver");
+		print(Time.time);
+	}
+
 	}
