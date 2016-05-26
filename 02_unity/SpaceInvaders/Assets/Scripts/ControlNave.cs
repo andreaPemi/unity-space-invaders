@@ -12,6 +12,7 @@ public class ControlNave : MonoBehaviour
 
 	// Acceso al prefab del disparo
 	public Rigidbody2D disparo;
+	public Rigidbody2D disparo1;
 
 	// Use this for initialization
 	void Start ()
@@ -51,12 +52,18 @@ public class ControlNave : MonoBehaviour
 			}
 		}
 
-		// Disparo
+		// Disparo normal
 		if (Input.GetKeyDown (KeyCode.Space)) {
 			disparar ();
 		}
+
+		// DisparoBomba
+		if (Input.GetKeyDown (KeyCode.M)) {
+			dispararBomba ();
+		}
 	}
 
+	//disparo normal
 	void disparar ()
 	{
 		// Hacemos copias del prefab del disparo y las lanzamos
@@ -70,6 +77,23 @@ public class ControlNave : MonoBehaviour
 
 		// Lanzarlo
 		d.AddForce (Vector2.up * fuerza, ForceMode2D.Impulse);	
+	}
+
+
+	//disparo bomba
+	void dispararBomba ()
+	{
+		// Hacemos copias del prefab del disparo y las lanzamos
+		Rigidbody2D b = (Rigidbody2D)Instantiate (disparo1, transform.position, transform.rotation);
+
+		// Desactivar la gravedad para este objeto, si no, ¡se cae!
+		b.gravityScale = 0;
+
+		// Posición de partida, en la punta de la nave
+		b.transform.Translate (Vector2.up * 0.7f);
+
+		// Lanzarlo
+		b.AddForce (Vector2.up * fuerza, ForceMode2D.Impulse);	
 	}
 
 }
