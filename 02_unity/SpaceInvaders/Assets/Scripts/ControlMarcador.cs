@@ -11,7 +11,7 @@ public class ControlMarcador : MonoBehaviour
 	// Objeto donde mostramos el texto
 	public GameObject puntuacion;
 
-	private Text t;
+	public Text t;
 
 	// Use this for initialization
 	void Start ()

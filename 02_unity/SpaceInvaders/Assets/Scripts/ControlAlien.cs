@@ -8,15 +8,17 @@ public class ControlAlien : MonoBehaviour
 
 
 	// Conexión al marcador, para poder actualizarlo
-	private GameObject marcador;
+	public GameObject marcador;
 
 	// Por defecto, 100 puntos por cada alien
 
 	private int puntos1 = 100;
 	private int puntos2 = 200;
 	private int puntos3 = 300;
+
 	// Objeto para reproducir la explosión de un alien
 	private GameObject efectoExplosion;
+	private GameObject ExplosionNave;
 
 	// Use this for initialization
 	void Start ()
@@ -26,6 +28,9 @@ public class ControlAlien : MonoBehaviour
 
 		// Objeto para reproducir la explosión de un alien
 		efectoExplosion = GameObject.Find ("EfectoExplosion");
+
+		// Objeto para reproducir la explosión de la nave
+		ExplosionNave = GameObject.Find ("ExplosionNave");
 	}
 	
 	// Update is called once per frame
@@ -88,7 +93,12 @@ public class ControlAlien : MonoBehaviour
 			}
 
 			} else if (coll.gameObject.tag == "nave") {
-				SceneManager.LoadScene ("Nivel1");
+			// Sonido de explosión
+			ExplosionNave.GetComponent<AudioSource> ().Play ();
+
+			Destroy (coll.gameObject);
+			//SceneManager.LoadScene ("GameOver");
+
 			}
 			
 
